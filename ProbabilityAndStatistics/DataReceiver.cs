@@ -11,6 +11,7 @@ namespace ProbabilityAndStatistics
     {
         SimpleSerialization simpleSerializer=new SimpleSerialization();
         FrequencySeries frequencySeries=new FrequencySeries();
+        SimpleRandomSampling simpleRandomSampling=new SimpleRandomSampling();
          
         public List<float> floatList = new List<float>();
         public void SetData()
@@ -56,5 +57,16 @@ namespace ProbabilityAndStatistics
         {
             frequencySeries.Frequency(floatList);
         }
+        public void SetSimpleRandomSampling()
+        {
+            Console.WriteLine("Please give the least value");
+            int up = Console.Read();
+            Console.WriteLine("Please give the biggest value");
+            int down = Console.Read();
+            Console.WriteLine("Please give the count of the random values");
+            int count=Console.Read();
+            simpleRandomSampling.RandomSampling(down,up,count);
+        }
+
     }
 }

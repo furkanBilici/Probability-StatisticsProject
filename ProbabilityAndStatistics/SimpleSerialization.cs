@@ -22,7 +22,7 @@ namespace ProbabilityAndStatistics
             GetSerializedList();
             return Serialized;
         } 
-        public void GetSerializedList()
+        void GetSerializedList()
         {
             Console.WriteLine("Simple Series: " + string.Join(" & ", Serialized));
         }

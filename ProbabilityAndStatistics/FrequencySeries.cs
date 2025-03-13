@@ -25,7 +25,7 @@ namespace ProbabilityAndStatistics
             GetFrequency();
             return frequencyDict;
         }
-        public void GetFrequency() 
+        void GetFrequency() 
         {
             foreach (var pair in frequencyDict)
             {
