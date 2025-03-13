@@ -2,5 +2,7 @@
 using ProbabilityAndStatistics;
 
 DataReceiver receiver = new DataReceiver();
+
 receiver.SetData();
-receiver.GetData();
+receiver.FrequencySeries();
+receiver.SimpleSerialize();

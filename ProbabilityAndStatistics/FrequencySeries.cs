@@ -22,6 +22,7 @@ namespace ProbabilityAndStatistics
                     frequencyDict[item] = 1;
                 }  
             }
+            GetFrequency();
             return frequencyDict;
         }
         public void GetFrequency() 

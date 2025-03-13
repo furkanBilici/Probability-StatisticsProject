@@ -19,11 +19,12 @@ namespace ProbabilityAndStatistics
                 NonSerialized.Remove(tinniest);
                 Serialized.Add(tinniest);
             }
+            GetSerializedList();
             return Serialized;
         } 
         public void GetSerializedList()
         {
-            Console.WriteLine("Dönüştürülen float listesi: " + string.Join(" & ", Serialized));
+            Console.WriteLine("Simple Series: " + string.Join(" & ", Serialized));
         }
     }
 }

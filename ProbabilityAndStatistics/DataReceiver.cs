@@ -9,7 +9,8 @@ namespace ProbabilityAndStatistics
 {
     internal class DataReceiver
     {
-        SimpleSerialization serializer=new SimpleSerialization();
+        SimpleSerialization simpleSerializer=new SimpleSerialization();
+        FrequencySeries frequencySeries=new FrequencySeries();
          
         public List<float> floatList = new List<float>();
         public void SetData()
@@ -23,6 +24,7 @@ namespace ProbabilityAndStatistics
                     break;
                 Data.Add(data);
             }
+           
             ConvertToFloatList(Data);
         }
         public void GetData()
@@ -43,7 +45,16 @@ namespace ProbabilityAndStatistics
                     Console.WriteLine($"Geçersiz giriş atlandı: {item}");
                 }
             }
-            floatList=serializer.SimpleSerializer(floatList);
+            floatList=simpleSerializer.SimpleSerializer(floatList);
+        }
+
+        public void SimpleSerialize()
+        {
+            simpleSerializer.SimpleSerializer(floatList);
+        }
+        public void FrequencySeries()
+        {
+            frequencySeries.Frequency(floatList);
         }
     }
 }
