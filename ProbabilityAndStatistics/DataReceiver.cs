@@ -9,6 +9,7 @@ namespace ProbabilityAndStatistics
 {
     internal class DataReceiver
     {
+        SimpleSerialization serializer=new SimpleSerialization();
          
         public List<float> floatList = new List<float>();
         public void SetData()
@@ -16,8 +17,7 @@ namespace ProbabilityAndStatistics
             List<string> Data=new List<string>();
             Console.WriteLine("Verileri girin(çıkış için q'yazın)");
             while (true)
-            {
-                
+            {  
                 string data = Console.ReadLine();
                 if (data == "q")
                     break;
@@ -27,10 +27,10 @@ namespace ProbabilityAndStatistics
         }
         public void GetData()
         {
-            Console.WriteLine("Dönüştürülen float listesi: " + string.Join("-", floatList));
+            Console.WriteLine("Dönüştürülen float listesi: " + string.Join(" & ", floatList));
         }
    
-    void ConvertToFloatList(List<string> Data)
+        void ConvertToFloatList(List<string> Data)
         {
             foreach (var item in Data)
             {
@@ -43,6 +43,7 @@ namespace ProbabilityAndStatistics
                     Console.WriteLine($"Geçersiz giriş atlandı: {item}");
                 }
             }
+            floatList=serializer.SimpleSerializer(floatList);
         }
     }
 }
