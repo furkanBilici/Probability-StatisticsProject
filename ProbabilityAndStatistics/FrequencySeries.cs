@@ -8,9 +8,9 @@ namespace ProbabilityAndStatistics
 {
     internal class FrequencySeries
     {
-        Dictionary<float,int> frequencyDict = new Dictionary<float,int>();
         public Dictionary<float, int> Frequency(List<float> nonFrequencyList)
         {
+            Dictionary<float,int> frequencyDict = new Dictionary<float,int>();
             foreach (var item in nonFrequencyList)
             {
                 if (frequencyDict.ContainsKey(item))
@@ -22,10 +22,9 @@ namespace ProbabilityAndStatistics
                     frequencyDict[item] = 1;
                 }  
             }
-            GetFrequency();
             return frequencyDict;
         }
-        void GetFrequency() 
+        public void GetFrequency(Dictionary<float,int> frequencyDict) 
         {
             foreach (var pair in frequencyDict)
             {

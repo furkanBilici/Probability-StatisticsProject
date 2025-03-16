@@ -8,21 +8,20 @@ namespace ProbabilityAndStatistics
 {
     internal class SimpleSerialization
     { 
-        float tinniest ;
-        List<float> Serialized = new List<float>();
+        
         public List<float> SimpleSerializer(List<float> NonSerialized)
         {
-           
+            float tinniest ;
+            List<float> Serialized = new List<float>();
             while (NonSerialized.Count()>0)
             {
                 tinniest = NonSerialized.Min();
                 NonSerialized.Remove(tinniest);
                 Serialized.Add(tinniest);
             }
-            GetSerializedList();
             return Serialized;
         } 
-        void GetSerializedList()
+        public void GetSerializedList(List<float> Serialized)
         {
             Console.WriteLine("Simple Series: " + string.Join(" & ", Serialized));
         }

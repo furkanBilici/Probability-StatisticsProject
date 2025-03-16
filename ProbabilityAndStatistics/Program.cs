@@ -4,5 +4,13 @@ using ProbabilityAndStatistics;
 DataReceiver receiver = new DataReceiver();
 
 receiver.SetData();
+
 receiver.FrequencySeries();
+
 receiver.SimpleSerialize();
+
+receiver.SystematicRandomSampling();
+
+receiver.SetSimpleRandomSampling();
+
+

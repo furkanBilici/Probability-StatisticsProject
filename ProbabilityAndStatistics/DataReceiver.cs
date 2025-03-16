@@ -12,12 +12,13 @@ namespace ProbabilityAndStatistics
         SimpleSerialization simpleSerializer=new SimpleSerialization();
         FrequencySeries frequencySeries=new FrequencySeries();
         SimpleRandomSampling simpleRandomSampling=new SimpleRandomSampling();
-         
+        SystematicRandomSampling systematicRandomSampling=new SystematicRandomSampling();   
+
         public List<float> floatList = new List<float>();
         public void SetData()
         {
             List<string> Data=new List<string>();
-            Console.WriteLine("Verileri girin(çıkış için q'yazın)");
+            Console.WriteLine("Please enter the values('q' for quit)");
             while (true)
             {  
                 string data = Console.ReadLine();
@@ -30,7 +31,7 @@ namespace ProbabilityAndStatistics
         }
         public void GetData()
         {
-            Console.WriteLine("Dönüştürülen float listesi: " + string.Join(" & ", floatList));
+            Console.WriteLine("Float list: " + string.Join(" & ", floatList));
         }
    
         void ConvertToFloatList(List<string> Data)
@@ -46,26 +47,34 @@ namespace ProbabilityAndStatistics
                     Console.WriteLine($"Geçersiz giriş atlandı: {item}");
                 }
             }
-            floatList=simpleSerializer.SimpleSerializer(floatList);
         }
 
         public void SimpleSerialize()
         {
-            simpleSerializer.SimpleSerializer(floatList);
+           simpleSerializer.GetSerializedList(simpleSerializer.SimpleSerializer(floatList));
         }
         public void FrequencySeries()
         {
-            frequencySeries.Frequency(floatList);
+            frequencySeries.GetFrequency(frequencySeries.Frequency(floatList));
         }
         public void SetSimpleRandomSampling()
         {
-            Console.WriteLine("Please give the least value");
-            int up = Console.Read();
-            Console.WriteLine("Please give the biggest value");
-            int down = Console.Read();
+            Console.WriteLine("\nPlease give the min value");
+            int min = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Please give the max value");
+            int max = int.Parse(Console.ReadLine());
+
             Console.WriteLine("Please give the count of the random values");
-            int count=Console.Read();
-            simpleRandomSampling.RandomSampling(down,up,count);
+            int count = int.Parse(Console.ReadLine());
+
+            simpleRandomSampling.GetList(  simpleRandomSampling.RandomSampling(min, max, count));
+        }
+        public void SystematicRandomSampling()
+        {
+            Console.WriteLine("Please enter the sample count: ");
+            int sampleCount=int.Parse(Console.ReadLine());
+            systematicRandomSampling.GetSRSList(systematicRandomSampling.SystematicRandom(floatList.Count(),sampleCount));
         }
 
     }

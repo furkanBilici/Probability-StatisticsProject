@@ -8,26 +8,26 @@ namespace ProbabilityAndStatistics
 {
     internal class SimpleRandomSampling
     {
-        public List<int> simpleRandom = new List<int>();
-        Random rnd = new Random();
-        int value;
         public List<int> RandomSampling(int down,int up, int count) 
         {
-            while (simpleRandom.Count() <= count)
+            List<int> simpleRandom = new List<int>();
+
+            Random rnd = new Random();
+            int value;
+            while (simpleRandom.Count() < count)
             {
                 value=rnd.Next(down,up);
-                if (simpleRandom.Contains(value) && count>(up-down))
+                if (simpleRandom.Contains(value) && count<=(up-down))
                 {
                     continue;
                 }
                 simpleRandom.Add(value);
             }
-            GetList();
             return simpleRandom;
         }
-        void GetList()
+        public void GetList(List<int> simpleRandom)
         {
-            Console.WriteLine("Simple Series: " + string.Join(" & ", simpleRandom));
+            Console.WriteLine(string.Join(" & ", simpleRandom));
         }
     }
 }
