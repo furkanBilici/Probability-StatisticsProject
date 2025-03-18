@@ -9,15 +9,17 @@ namespace ProbabilityAndStatistics
     internal class SimpleSerialization
     { 
         
-        public List<float> SimpleSerializer(List<float> NonSerialized)
+        public List<float> SimpleSerializer(List<float> NonSerializedOrigin)
         {
             float tinniest ;
+            List<float> NonSerialized = new List<float>(NonSerializedOrigin);
+
             List<float> Serialized = new List<float>();
             while (NonSerialized.Count()>0)
             {
                 tinniest = NonSerialized.Min();
-                NonSerialized.Remove(tinniest);
                 Serialized.Add(tinniest);
+                NonSerialized.Remove(tinniest);   
             }
             return Serialized;
         } 

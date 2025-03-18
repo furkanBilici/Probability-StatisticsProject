@@ -26,7 +26,6 @@ namespace ProbabilityAndStatistics
                     break;
                 Data.Add(data);
             }
-           
             ConvertToFloatList(Data);
         }
         public void GetData()
@@ -68,13 +67,13 @@ namespace ProbabilityAndStatistics
             Console.WriteLine("Please give the count of the random values");
             int count = int.Parse(Console.ReadLine());
 
-            simpleRandomSampling.GetList(  simpleRandomSampling.RandomSampling(min, max, count));
+            simpleRandomSampling.GetList(simpleRandomSampling.RandomSampling(min, max, count));
         }
         public void SystematicRandomSampling()
         {
             Console.WriteLine("Please enter the sample count: ");
             int sampleCount=int.Parse(Console.ReadLine());
-            systematicRandomSampling.GetSRSList(systematicRandomSampling.SystematicRandom(floatList.Count(),sampleCount));
+            systematicRandomSampling.GetSRSList(systematicRandomSampling.SystematicRandom(floatList.Count(), sampleCount));
         }
 
     }

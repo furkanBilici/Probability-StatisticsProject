@@ -5,11 +5,11 @@ DataReceiver receiver = new DataReceiver();
 
 receiver.SetData();
 
+receiver.SystematicRandomSampling();
+
 receiver.FrequencySeries();
 
 receiver.SimpleSerialize();
-
-receiver.SystematicRandomSampling();
 
 receiver.SetSimpleRandomSampling();
 
