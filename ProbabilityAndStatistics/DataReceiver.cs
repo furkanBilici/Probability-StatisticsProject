@@ -9,10 +9,13 @@ namespace ProbabilityAndStatistics
 {
     internal class DataReceiver
     {
+        public bool can=true;
+
         SimpleSerialization simpleSerializer=new SimpleSerialization();
         FrequencySeries frequencySeries=new FrequencySeries();
         SimpleRandomSampling simpleRandomSampling=new SimpleRandomSampling();
-        SystematicRandomSampling systematicRandomSampling=new SystematicRandomSampling();   
+        SystematicRandomSampling systematicRandomSampling=new SystematicRandomSampling();  
+        FrequencyTable frequencyTable=new FrequencyTable(); 
 
         public List<float> floatList = new List<float>();
         public void SetData()
@@ -41,11 +44,9 @@ namespace ProbabilityAndStatistics
                 {
                     floatList.Add(number);
                 }
-                else
-                {
-                    Console.WriteLine($"Geçersiz giriş atlandı: {item}");
-                }
             }
+            if (floatList.Count <= 0) { can = false; }
+            floatList=simpleSerializer.SimpleSerializer(floatList);
         }
 
         public void SimpleSerialize()
@@ -74,6 +75,10 @@ namespace ProbabilityAndStatistics
             Console.WriteLine("Please enter the sample count: ");
             int sampleCount=int.Parse(Console.ReadLine());
             systematicRandomSampling.GetSRSList(systematicRandomSampling.SystematicRandom(floatList.Count(), sampleCount));
+        }
+        public void FrequencyTable()
+        {
+            frequencyTable.GetFrequencyTable(frequencyTable.FrequencyTableMaker(floatList));
         }
 
     }

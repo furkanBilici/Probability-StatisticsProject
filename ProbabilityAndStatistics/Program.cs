@@ -4,13 +4,17 @@ using ProbabilityAndStatistics;
 DataReceiver receiver = new DataReceiver();
 
 receiver.SetData();
+if (receiver.can == true)
+{
+    receiver.FrequencyTable();
+    
+    receiver.SystematicRandomSampling();
 
-receiver.SystematicRandomSampling();
+    receiver.FrequencySeries();
 
-receiver.FrequencySeries();
+    receiver.SimpleSerialize();
 
-receiver.SimpleSerialize();
-
-receiver.SetSimpleRandomSampling();
+    receiver.SetSimpleRandomSampling();
+}
 
 
