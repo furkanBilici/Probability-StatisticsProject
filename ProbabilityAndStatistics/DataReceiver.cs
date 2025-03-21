@@ -81,5 +81,7 @@ namespace ProbabilityAndStatistics
             frequencyTable.GetFrequencyTable(frequencyTable.FrequencyTableMaker(floatList));
         }
 
+        
+
     }
 }
