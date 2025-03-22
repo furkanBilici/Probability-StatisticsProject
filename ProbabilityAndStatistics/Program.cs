@@ -12,9 +12,12 @@ if (receiver.can == true)
 
     receiver.FrequencySeries();
 
+    receiver.MeasuresOfCentralTendencedy();
+ 
     receiver.SimpleSerialize();
 
     receiver.SetSimpleRandomSampling();
+   
 }
 
 

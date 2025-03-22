@@ -16,6 +16,7 @@ namespace ProbabilityAndStatistics
         SimpleRandomSampling simpleRandomSampling=new SimpleRandomSampling();
         SystematicRandomSampling systematicRandomSampling=new SystematicRandomSampling();  
         FrequencyTable frequencyTable=new FrequencyTable(); 
+        MeasuresOfCentralTendencedy centralTendencedy=new MeasuresOfCentralTendencedy();
 
         public List<float> floatList = new List<float>();
         public void SetData()
@@ -48,7 +49,6 @@ namespace ProbabilityAndStatistics
             if (floatList.Count <= 0) { can = false; }
             floatList=simpleSerializer.SimpleSerializer(floatList);
         }
-
         public void SimpleSerialize()
         {
            simpleSerializer.GetSerializedList(simpleSerializer.SimpleSerializer(floatList));
@@ -80,8 +80,10 @@ namespace ProbabilityAndStatistics
         {
             frequencyTable.GetFrequencyTable(frequencyTable.FrequencyTableMaker(floatList));
         }
-
-        
+        public void MeasuresOfCentralTendencedy()
+        {
+            centralTendencedy.GetCentralTendencedy(centralTendencedy.MeasuresCentralT(floatList));
+        }
 
     }
 }
