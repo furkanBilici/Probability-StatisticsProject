@@ -39,21 +39,19 @@ namespace ProbabilityAndStatistics
         }
         public float Median(List<float> list)
         {
-            float median;
-            int index;
-            if (list.Count%2==0)
+            int count = list.Count;
+            int index = count / 2;
+
+            if (count % 2 == 0)
             {
-                index=list.Count/2;
-                median = (list[index] + list[index+1])/2;
+                float result = (list[index-1]+list[index])/2;
+                return result;
             }
             else
             {
-                index = (list.Count + 1) / 2;
-                median = list[index];
+                return list[index];
             }
-            return median;
         }
-
         List<float> Mode(List<float> list)
         {
             Dictionary<float, int> modeTimes = new Dictionary<float, int>();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,45 +19,46 @@ namespace ProbabilityAndStatistics
         FrequencyTable frequencyTable=new FrequencyTable(); 
         MeasuresOfCentralTendencedy centralTendencedy=new MeasuresOfCentralTendencedy();
         MeasuresOfVariability measuresOfVariability=new MeasuresOfVariability();
+        PermutationAndCombination permutationAndCombination=new PermutationAndCombination();
 
-        public List<float> floatList = new List<float>();
+        public List<float> floatList;
         public void SetData()
         {
-            List<string> Data=new List<string>();
-            Console.WriteLine("Please enter the values('q' for quit)");
-            while (true)
-            {  
-                string data = Console.ReadLine();
-                if (data == "q")
-                    break;
-                Data.Add(data);
+            List<float> Data = new List<float>(); 
+            Console.WriteLine("Please enter the values separated by commas (e.g., 1.5, 5.2, 2.6) and press Enter when done.");
+
+            string data = Console.ReadLine();
+
+            string[] dataArray = data.Split(',');
+
+            foreach (string item in dataArray)
+            {
+                // Her öğeyi temizle (Trim) ve float'a çevir.
+                if (float.TryParse(item.Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out float value))
+                {
+                    Data.Add(value);
+                }
+                else
+                {
+                    Console.WriteLine($"Invalid input: {item} is not a valid number.");
+                }
             }
-            ConvertToFloatList(Data);
+            floatList = new List<float>(Data);
+            floatList = simpleSerializer.SimpleSerializer(floatList);
         }
         public void GetData()
         {
             Console.WriteLine("Float list: " + string.Join(" & ", floatList));
         }
-   
-        void ConvertToFloatList(List<string> Data)
-        {
-            foreach (var item in Data)
-            {
-                if (float.TryParse(item, out float number))
-                {
-                    floatList.Add(number);
-                }
-            }
-            if (floatList.Count <= 0) { can = false; }
-            floatList=simpleSerializer.SimpleSerializer(floatList);
-        }
         public void SimpleSerialize()
         {
-           simpleSerializer.GetSerializedList(simpleSerializer.SimpleSerializer(floatList));
+            List<float> data = new List<float>(floatList);
+            simpleSerializer.GetSerializedList(simpleSerializer.SimpleSerializer(data));
         }
         public void FrequencySeries()
         {
-            frequencySeries.GetFrequency(frequencySeries.Frequency(floatList));
+            List<float> data = new List<float>(floatList);
+            frequencySeries.GetFrequency(frequencySeries.Frequency(data));
         }
         public void SetSimpleRandomSampling()
         {
@@ -73,21 +75,35 @@ namespace ProbabilityAndStatistics
         }
         public void SystematicRandomSampling()
         {
+            List<float> data = new List<float>(floatList);
             Console.WriteLine("Please enter the sample count: ");
             int sampleCount=int.Parse(Console.ReadLine());
-            systematicRandomSampling.GetSRSList(systematicRandomSampling.SystematicRandom(floatList.Count(), sampleCount));
+            systematicRandomSampling.GetSRSList(systematicRandomSampling.SystematicRandom(data.Count(), sampleCount));
         }
         public void FrequencyTable()
         {
-            frequencyTable.GetFrequencyTable(frequencyTable.FrequencyTableMaker(floatList));
+            List<float> data = new List<float>(floatList);
+            frequencyTable.GetFrequencyTable(frequencyTable.FrequencyTableMaker(data));
         }
         public void MeasuresOfCentralTendencedy()
         {
-            centralTendencedy.GetCentralTendencedy(centralTendencedy.MeasuresCentralT(floatList));
+            List<float> data = new List<float>(floatList);
+            centralTendencedy.GetCentralTendencedy(centralTendencedy.MeasuresCentralT(data));
         }
         public void MeasuresOfVariability()
         {
-            measuresOfVariability.GetMofv(measuresOfVariability.MeasureVarialibty(floatList));
+            List<float> data = new List<float>(floatList);
+            measuresOfVariability.GetMofv(measuresOfVariability.MeasureVarialibty(data));
         }
+        public void PermutationAndCombination()
+        {
+            Console.WriteLine("Please give the n");
+            int n = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Please give the r");
+            int r = int.Parse(Console.ReadLine());
+            permutationAndCombination.GetPermutationAndCombination(permutationAndCombination.PermutationCombinationMeasurement(n,r));
+        }
+
     }
 }

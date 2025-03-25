@@ -37,7 +37,7 @@ namespace ProbabilityAndStatistics
         List<float> ClassCalculator(float Data, int k, int h)
         {
             List<float> Limit = new List<float>();
-            for (int i = 1; i < k; i++)
+            for (int i = 0; i < k; i++)
             {
                 Data += h;
                 Limit.Add(Data);
@@ -46,102 +46,87 @@ namespace ProbabilityAndStatistics
         }
         List<float> ClassLowerLimitCalculator(float lowerData, int k, int h)
         {
-            List<float> lowerLimit = new List<float>();
-            lowerLimit=ClassCalculator(lowerData, k, h);
-            return lowerLimit;
+            return ClassCalculator(lowerData-h, k, h);
         }
-        List<float> ClassUpperLimitCalculator(float lowerData, int k,int h)
+        List<float> ClassUpperLimitCalculator(float lowerData, int k, int h)
         {
             List<float> upperLimit = new List<float>();
-            var upperData = lowerData + h;
-            upperData--;
-            upperLimit=ClassCalculator(upperData, k,h);
-            return upperLimit;
+            float upperData = lowerData;
+            if (upperData > 10)
+            { upperData--; }
+            else { upperData-=0.1f; }
+            return ClassCalculator(upperData, k, h);
         }
-        List<float> ClassLowerBorderCalculator(float data, int k,int h)
+        List<float> ClassLowerBorderCalculator(float data, int k, int h)
         {
             List<float> lowerBorder = new List<float>();
             data = (data + data - 1) / 2;
-            lowerBorder=ClassCalculator(data, k, h);    
-            return lowerBorder;
+            return ClassCalculator(data, k, h);
         }
-        List<float> ClassUpperBorderCalculator(float data, int k, int h)
+         List<float> ClassUpperBorderCalculator(float data, int k, int h)
         {
             List<float> upperBorder = new List<float>();
             data = data + h;
             data = (data + data - 1) / 2;
-            upperBorder = ClassCalculator(data, k, h);
-            return upperBorder;
+            return ClassCalculator(data, k, h);
         }
-        List<float> ClassFrequencys(List<float> data,List<List<float>> frequency)
+        List<float> ClassFrequencys(List<float> data, List<List<float>> frequency)
         {
-            List<float> lower = new List<float>(frequency[0]);  
-            List<float> upper = new List<float>(frequency[1]);
+            List<float> lower = frequency[0];
+            List<float> upper = frequency[1];
             List<float> classFrequency = new List<float>();
-            int count=0;
-            for(int i = 0; i < upper.Count(); i++)
+
+            for (int i = 0; i < lower.Count; i++)
             {
-                foreach(float item in data)
-                {
-                    if (lower[i] <= item && item <= upper[i])
-                    {
-                        count++;
-                    } 
-                }
-                if (count > 0)
-                {
-                    classFrequency.Add(count);
-                }
-                count = 0;
+                int count = data.Count(x => x >= lower[i] && x < upper[i]);
+                classFrequency.Add(count);
             }
+
             return classFrequency;
         }
         List<float> ClassMidPointCalculator(List<List<float>> frequency)
         {
-            List<float> lower=new List<float>(frequency[0]);
-            List<float> upper=new List<float>(frequency[1]);
+            List<float> lower = frequency[0];
+            List<float> upper = frequency[1];
             List<float> classMid = new List<float>();
-            float data;
-
-            for(int i = 0; i < upper.Count(); i++)
+            for (int i = 0; i < upper.Count; i++)
             {
-                data = (upper[i] + lower[i])/2;
-                classMid.Add(data); 
+                float midpoint = (upper[i] + lower[i]) / 2;
+                classMid.Add(midpoint);
             }
             return classMid;
         }
+
         List<float> AdditiveFrequency(List<List<float>> frequency)
         {
-            List<float> classFrequency= new List<float>(frequency[4]);
-            List<float> additive =new List<float>();
+            List<float> classFrequency = frequency[4];
+            List<float> additive = new List<float>();
             float count = 0;
-            foreach(float frequencyItem in classFrequency)
+            foreach (float frequencyItem in classFrequency)
             {
                 count += frequencyItem;
                 additive.Add(count);
-            }   
+            }
             return additive;
         }
         List<float> ProportionalFrequency(List<List<float>> frequency, int n)
         {
-            List<float> classFrequency = new List<float>(frequency[4]);
+            List<float> classFrequency = frequency[4];
             List<float> proportional = new List<float>();
-            float data;
-            foreach(float frequencyItem in classFrequency)
+            foreach (float frequencyItem in classFrequency)
             {
-                data = frequencyItem/n;
-                proportional.Add(data); 
+                float data = frequencyItem / n;
+                proportional.Add(data);
             }
             return proportional;
         }
 
         public void GetFrequencyTable(List<List<float>> frequency)
         {
-            
             string[] headers = {
-                "Sınıf Alt Limiti", "Sınıf Üst Limiti", "Sınıf Alt Sınır", "Sınıf Üst Sınır",
-                "Frekans", "Sınıf Ortası", "Birikimli Frekans", "Oransal Frekans"
-            };
+        "Sınıf Alt Limiti", "Sınıf Üst Limiti", "Sınıf Alt Sınır", "Sınıf Üst Sınır",
+        "Frekans", "Sınıf Ortası", "Birikimli Frekans", "Oransal Frekans"
+    };
 
             Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------------------------------");
 
