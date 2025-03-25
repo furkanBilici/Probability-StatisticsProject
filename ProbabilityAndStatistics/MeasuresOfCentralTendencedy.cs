@@ -9,8 +9,9 @@ namespace ProbabilityAndStatistics
     internal class MeasuresOfCentralTendencedy
     {
         Dictionary<string,float> centralTendencedy=new Dictionary<string,float>();  
-        public Dictionary<string,float> MeasuresCentralT(List<float> list)
+        public Dictionary<string,float> MeasuresCentralT(List<float> listOg)
         {
+            List<float> list = new List<float>(listOg);
             centralTendencedy.Add("ArithmeticMean", ArithmeticMean(list));
             centralTendencedy.Add("Median",Median(list));
 
@@ -36,7 +37,7 @@ namespace ProbabilityAndStatistics
             arithmetic=sum/list.Count;
             return arithmetic;
         }
-        float Median(List<float> list)
+        public float Median(List<float> list)
         {
             float median;
             int index;

@@ -13,6 +13,8 @@ if (receiver.can == true)
     receiver.FrequencySeries();
 
     receiver.MeasuresOfCentralTendencedy();
+
+    receiver.MeasuresOfVariability();
  
     receiver.SimpleSerialize();
 

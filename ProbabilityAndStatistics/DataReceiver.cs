@@ -17,6 +17,7 @@ namespace ProbabilityAndStatistics
         SystematicRandomSampling systematicRandomSampling=new SystematicRandomSampling();  
         FrequencyTable frequencyTable=new FrequencyTable(); 
         MeasuresOfCentralTendencedy centralTendencedy=new MeasuresOfCentralTendencedy();
+        MeasuresOfVariability measuresOfVariability=new MeasuresOfVariability();
 
         public List<float> floatList = new List<float>();
         public void SetData()
@@ -84,6 +85,9 @@ namespace ProbabilityAndStatistics
         {
             centralTendencedy.GetCentralTendencedy(centralTendencedy.MeasuresCentralT(floatList));
         }
-
+        public void MeasuresOfVariability()
+        {
+            measuresOfVariability.GetMofv(measuresOfVariability.MeasureVarialibty(floatList));
+        }
     }
 }
