@@ -28,7 +28,7 @@ namespace ProbabilityAndStatistics
         {
             foreach (var pair in frequencyDict)
             {
-                Console.WriteLine($"{pair.Key}: {pair.Value} times");
+                Console.WriteLine($"{pair.Key}: {pair.Value} defa");
             }
         }
     }

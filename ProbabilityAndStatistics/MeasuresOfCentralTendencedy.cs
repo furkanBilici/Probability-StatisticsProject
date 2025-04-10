@@ -8,9 +8,10 @@ namespace ProbabilityAndStatistics
 {
     internal class MeasuresOfCentralTendencedy
     {
-        Dictionary<string,float> centralTendencedy=new Dictionary<string,float>();  
+          
         public Dictionary<string,float> MeasuresCentralT(List<float> listOg)
         {
+            Dictionary<string,float> centralTendencedy=new Dictionary<string,float>();
             List<float> list = new List<float>(listOg);
             centralTendencedy.Add("ArithmeticMean", ArithmeticMean(list));
             centralTendencedy.Add("Median",Median(list));
@@ -65,10 +66,13 @@ namespace ProbabilityAndStatistics
             }
 
             int maxCount = modeTimes.Values.Max();
+            if (modeTimes.Values.All(v => v == maxCount) && modeTimes.Count > 1)
+            {
+                return new List<float>(); // boş liste döndür -> mod yok
+            }
             List<float> modes = modeTimes.Where(x => x.Value == maxCount)
                                          .Select(x => x.Key)
                                          .ToList();
-
             return modes;
         }
 

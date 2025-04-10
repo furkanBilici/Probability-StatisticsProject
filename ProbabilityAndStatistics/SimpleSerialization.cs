@@ -25,7 +25,7 @@ namespace ProbabilityAndStatistics
         } 
         public void GetSerializedList(List<float> Serialized)
         {
-            Console.WriteLine("Simple Series: " + string.Join(" & ", Serialized));
+            Console.WriteLine("Basit Seri: " + string.Join(" & ", Serialized));
         }
     }
 }

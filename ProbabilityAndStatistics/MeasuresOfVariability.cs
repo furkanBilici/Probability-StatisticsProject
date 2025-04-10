@@ -11,6 +11,7 @@ namespace ProbabilityAndStatistics
         MeasuresOfCentralTendencedy mofct=new MeasuresOfCentralTendencedy();    
         public Dictionary<string,double> MeasureVarialibty(List<float> listOg)
         {
+            
             List<float> list = new List<float>(listOg);
             Dictionary<string, double> mofv = new Dictionary<string, double>();
             float variance = Variance(list);
@@ -20,12 +21,12 @@ namespace ProbabilityAndStatistics
             float harmonical=HarmonicalMean(list);
             double geometrical=GeometricalMean(list);
 
-            mofv.Add("Variance", variance);
-            mofv.Add("Standart Deviation", standartDeviation);
-            mofv.Add("Interquartile Range",iqr);
-            mofv.Add("Coefficient of Variation", cv);
-            mofv.Add("Harmonical Mean", harmonical);
-            mofv.Add("Geometrical Mean", geometrical);
+            mofv.Add("Varyans", variance);
+            mofv.Add("Standart sapma", standartDeviation);
+            mofv.Add("Çeyrekler Arası Açıklık",iqr);
+            mofv.Add("Varyasyon Katsayısı", cv);
+            mofv.Add("Harmonik Ortalama", harmonical);
+            mofv.Add("Geometrik Ortalama", geometrical);
             return mofv;    
         }
         float Variance(List<float>list,bool isSample=false)
@@ -50,8 +51,6 @@ namespace ProbabilityAndStatistics
 
             float q1 = mofct.Median(lowerHalf);
             float q3 = mofct.Median(upperHalf);
-
- 
             return q3 - q1;
         }
 

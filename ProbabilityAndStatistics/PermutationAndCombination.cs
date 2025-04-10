@@ -8,8 +8,8 @@ namespace ProbabilityAndStatistics
         public Dictionary<string, double> PermutationCombinationMeasurement(int n, int r)
         {
             Dictionary<string, double> result = new Dictionary<string, double>();
-            result.Add("Permutation", Permutation(n, r));
-            result.Add("Combination", Combination(n, r));
+            result.Add("Permutasyon", Permutation(n, r));
+            result.Add("Kombinasyon", Combination(n, r));
             return result;
         }
 

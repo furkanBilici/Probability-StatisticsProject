@@ -10,7 +10,7 @@ namespace ProbabilityAndStatistics
             List<float> systematicRandom = new List<float>();
             Random rn = new Random();
 
-            float k = (float)listCount / sampleCount; // Örnekleme aralığı
+            float k = (float)listCount / (float)sampleCount; // Örnekleme aralığı
             float r = 1 + (float)rn.NextDouble() * k; // Rastgele başlangıç noktası (1 ile k arasında)
 
             for (int i = 0; i < sampleCount; i++)

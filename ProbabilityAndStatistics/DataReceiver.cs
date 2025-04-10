@@ -25,7 +25,7 @@ namespace ProbabilityAndStatistics
         public void SetData()
         {
             List<float> Data = new List<float>(); 
-            Console.WriteLine("Please enter the values separated by commas (e.g., 1.5, 5.2, 2.6) and press Enter when done.");
+            Console.WriteLine("Değerleri virgülle ayırarak girin (ör., 1.5, 5.2, 2.6) ve tamamlanınca enter'layın.");
 
             string data = Console.ReadLine();
 
@@ -40,7 +40,7 @@ namespace ProbabilityAndStatistics
                 }
                 else
                 {
-                    Console.WriteLine($"Invalid input: {item} is not a valid number.");
+                    Console.WriteLine($"Yanlış giriş: {item} Geçerli sayı değil.");
                 }
             }
             floatList = new List<float>(Data);
@@ -62,13 +62,13 @@ namespace ProbabilityAndStatistics
         }
         public void SetSimpleRandomSampling()
         {
-            Console.WriteLine("\nPlease give the min value");
+            Console.WriteLine("\nMinimum değeri girin: ");
             int min = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Please give the max value");
+            Console.WriteLine("Maksimum değeri girin: ");
             int max = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Please give the count of the random values");
+            Console.WriteLine("Random değerlerin sayısını girin: ");
             int count = int.Parse(Console.ReadLine());
 
             simpleRandomSampling.GetList(simpleRandomSampling.RandomSampling(min, max, count));
@@ -76,7 +76,7 @@ namespace ProbabilityAndStatistics
         public void SystematicRandomSampling()
         {
             List<float> data = new List<float>(floatList);
-            Console.WriteLine("Please enter the sample count: ");
+            Console.WriteLine("Örnekleme sayısını girin: ");
             int sampleCount=int.Parse(Console.ReadLine());
             systematicRandomSampling.GetSRSList(systematicRandomSampling.SystematicRandom(data.Count(), sampleCount));
         }
@@ -97,10 +97,10 @@ namespace ProbabilityAndStatistics
         }
         public void PermutationAndCombination()
         {
-            Console.WriteLine("Please give the n");
+            Console.WriteLine("n değerini verin: ");
             int n = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Please give the r");
+            Console.WriteLine("r değerini verin: ");
             int r = int.Parse(Console.ReadLine());
             permutationAndCombination.GetPermutationAndCombination(permutationAndCombination.PermutationCombinationMeasurement(n,r));
         }

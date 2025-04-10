@@ -37,16 +37,17 @@ namespace ProbabilityAndStatistics
         List<float> ClassCalculator(float Data, int k, int h)
         {
             List<float> Limit = new List<float>();
-            for (int i = 0; i < k; i++)
+            Limit.Add(Data);
+            for (int i = 1; i < k; i++)
             {
-                Data += h;
+                Data = Data + h;
                 Limit.Add(Data);
             }
             return Limit;
         }
         List<float> ClassLowerLimitCalculator(float lowerData, int k, int h)
         {
-            return ClassCalculator(lowerData-h, k, h);
+            return ClassCalculator(lowerData, k, h);
         }
         List<float> ClassUpperLimitCalculator(float lowerData, int k, int h)
         {
@@ -55,7 +56,7 @@ namespace ProbabilityAndStatistics
             if (upperData > 10)
             { upperData--; }
             else { upperData-=0.1f; }
-            return ClassCalculator(upperData, k, h);
+            return ClassCalculator(upperData+h, k, h);
         }
         List<float> ClassLowerBorderCalculator(float data, int k, int h)
         {
@@ -66,9 +67,8 @@ namespace ProbabilityAndStatistics
          List<float> ClassUpperBorderCalculator(float data, int k, int h)
         {
             List<float> upperBorder = new List<float>();
-            data = data + h;
             data = (data + data - 1) / 2;
-            return ClassCalculator(data, k, h);
+            return ClassCalculator(data+h, k, h);
         }
         List<float> ClassFrequencys(List<float> data, List<List<float>> frequency)
         {
@@ -124,19 +124,19 @@ namespace ProbabilityAndStatistics
         public void GetFrequencyTable(List<List<float>> frequency)
         {
             string[] headers = {
-        "Sınıf Alt Limiti", "Sınıf Üst Limiti", "Sınıf Alt Sınır", "Sınıf Üst Sınır",
-        "Frekans", "Sınıf Ortası", "Birikimli Frekans", "Oransal Frekans"
-    };
+                "Sınıf Alt Limiti", "Sınıf Üst Limiti", "Sınıf Alt Sınır", "Sınıf Üst Sınır",
+                "Frekans", "Sınıf Ortası", "Birikimli Frekans", "Oransal Frekans"
+            };
 
-            Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
             // Başlıkları yazdır
             foreach (string header in headers)
             {
-                Console.Write($"{header,-18}");
+                Console.Write($"{header,-20}");
             }
             Console.WriteLine();
-            Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
             if (frequency == null || frequency.Count == 0)
             {
@@ -150,12 +150,12 @@ namespace ProbabilityAndStatistics
             {
                 for (int j = 0; j < frequency.Count; j++)
                 {
-                    Console.Write($"{frequency[j][i],-18:F2}");
+                    Console.Write($"{frequency[j][i],-20:F2}");
                 }
                 Console.WriteLine();
             }
 
-            Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------------------");
         }
 
     }
