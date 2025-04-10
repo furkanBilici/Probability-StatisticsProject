@@ -14,7 +14,7 @@ namespace ProbabilityAndStatistics
 
             Random rnd = new Random();
             int value;
-            while (simpleRandom.Count() <= count)
+            while (simpleRandom.Count() < count)
             {
                 value=rnd.Next(down,up);
                 if (simpleRandom.Contains(value) && count<=(up-down))

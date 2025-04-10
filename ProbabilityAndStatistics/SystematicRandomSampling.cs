@@ -5,27 +5,31 @@ namespace ProbabilityAndStatistics
 {
     internal class SystematicRandomSampling
     {
-        public List<float> SystematicRandom(int listCount, int sampleCount)
+        public List<int> SystematicRandom(int listCount, int sampleCount)
         {
-            List<float> systematicRandom = new List<float>();
+            List<int> systematicRandom = new List<int>();
             Random rn = new Random();
 
-            float k = (float)listCount / (float)sampleCount; // Örnekleme aralığı
-            float r = 1 + (float)rn.NextDouble() * k; // Rastgele başlangıç noktası (1 ile k arasında)
+            int k = listCount / sampleCount;
+            int r = rn.Next(0, k); 
 
             for (int i = 0; i < sampleCount; i++)
             {
-                float index = r + (i * k);
+                int index = r + (i * k);
+                if (index >= listCount)
+                    break;
+
                 systematicRandom.Add(index);
             }
 
             return systematicRandom;
         }
 
-        public void GetSRSList(List<float> SRSList)
+        public void GetSRSList(List<int> SRSList)
         {
             Console.WriteLine(string.Join(" & ", SRSList));
         }
     }
 }
+
 
