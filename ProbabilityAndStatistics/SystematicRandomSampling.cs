@@ -16,14 +16,7 @@ namespace ProbabilityAndStatistics
             for (int i = 0; i < sampleCount; i++)
             {
                 float index = r + (i * k);
-                if (index <= listCount)
-                {
-                    systematicRandom.Add(index);
-                }
-                else
-                {
-                    break; // Seçilen index listCount'u geçerse döngüyü kır
-                }
+                systematicRandom.Add(index);
             }
 
             return systematicRandom;

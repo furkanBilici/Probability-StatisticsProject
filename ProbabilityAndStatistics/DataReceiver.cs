@@ -76,9 +76,11 @@ namespace ProbabilityAndStatistics
         public void SystematicRandomSampling()
         {
             List<float> data = new List<float>(floatList);
-            Console.WriteLine("Örnekleme sayısını girin: ");
+            Console.WriteLine("N girin: ");
+            int count = int.Parse(Console.ReadLine());
+            Console.WriteLine("n girin: ");
             int sampleCount=int.Parse(Console.ReadLine());
-            systematicRandomSampling.GetSRSList(systematicRandomSampling.SystematicRandom(data.Count(), sampleCount));
+            systematicRandomSampling.GetSRSList(systematicRandomSampling.SystematicRandom(count, sampleCount));
         }
         public void FrequencyTable()
         {
